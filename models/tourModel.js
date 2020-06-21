@@ -17,10 +17,19 @@ var tourSchema = new Schema({
   imageCover: {},
   images: {},
   startDates: {},
-  startLocation: {},
+  startLocation: {type: {
+    type: String,
+    default: 'Point',
+    enum: ['Point']
+  },
+  coordinates: [Number],
+  address: String,
+  description: String},
   locations: {},
   guides: {},
 })
+
+tourSchema.index({startLocation: '2dsphere'})
 
 
 module.exports = mongoose.model('Tour', tourSchema);

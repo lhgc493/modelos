@@ -12,4 +12,10 @@ router.route('/:id')
     .get(tourController.findOneTour)
     .patch(tourController.updateTour)
     .delete(tourController.deleteTour)
+
+
+router.route('/tours-area/:distance/center/:latlng/unit/:unit')
+    .get(tourController.toursEnArea);
 module.exports = router;
+
+router.route('/distances/:latlng/unit/:unit').get(tourController.getDistance);
